@@ -23,10 +23,10 @@ On Linux and MacOSx (or Windows with `bash`), if you want to go faster and gener
 [source]
 ----
 # Bash
-curl https://gist.githubusercontent.com/cescoffier/cfd46c2614f54d5e2a88d5fdc4b828ed/raw/2bba5f11b6a2f520704b6ba293e5289b58ce3904/create-project-maven.sh -o vertx-create-maven-project.sh && bash vertx-create-maven-project.sh
+curl https://gist.githubusercontent.com/cescoffier/cfd46c2614f54d5e2a88d5fdc4b828ed/raw/453bc44856bb93f1c31fbe8b08a285793b0134cd/create-project-maven.sh -o vertx-create-maven-project.sh && bash vertx-create-maven-project.sh
 
 # Fish
-curl https://gist.githubusercontent.com/cescoffier/cfd46c2614f54d5e2a88d5fdc4b828ed/raw/2bba5f11b6a2f520704b6ba293e5289b58ce3904/create-project-maven.sh -o vertx-create-maven-project.sh;; bash vertx-create-maven-project.sh
+curl https://gist.githubusercontent.com/cescoffier/cfd46c2614f54d5e2a88d5fdc4b828ed/raw/453bc44856bb93f1c31fbe8b08a285793b0134cd/create-project-maven.sh -o vertx-create-maven-project.sh; bash vertx-create-maven-project.sh
 ----
 
 == Running the project

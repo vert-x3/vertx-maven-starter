@@ -7,7 +7,7 @@
 
   <groupId>io.vertx.starter</groupId>
   <artifactId>vertx-start-project</artifactId>
-  <version>1.0-SNASPHOT</version>
+  <version>1.0-SNAPSHOT</version>
 
   <properties>
     <vertx.version>3.3.2</vertx.version>
