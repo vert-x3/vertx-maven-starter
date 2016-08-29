@@ -18,17 +18,27 @@ git clone https://github.com/cescoffier/vertx-maven-starter.git PROJECT_NAME
 
 Replace `PROJECT_NAME` with the name of your project.
 
+On Linux and MacOSx (or Windows with `bash`), if you want to go faster and generate an already configured project run:
+
+[source]
+----
+# Bash
+curl https://gist.githubusercontent.com/cescoffier/cfd46c2614f54d5e2a88d5fdc4b828ed/raw/2bba5f11b6a2f520704b6ba293e5289b58ce3904/create-project-maven.sh -o vertx-create-maven-project.sh && bash vertx-create-maven-project.sh
+
+# Fish
+curl https://gist.githubusercontent.com/cescoffier/cfd46c2614f54d5e2a88d5fdc4b828ed/raw/2bba5f11b6a2f520704b6ba293e5289b58ce3904/create-project-maven.sh -o vertx-create-maven-project.sh;; bash vertx-create-maven-project.sh
+----
+
 == Running the project
 
 Once you have retrieved the project, you can check that everything works with:
 
 [source]
 ----
-mvn clean test
-mvn exec:java
+mvn test exec:java
 ----
 
-The first command compiles the project and runs the tests. The second command let you try to project by yourself. Once the second command has been launched, open your browser to http://localhost:8080. You should see a _Hello World_ message.
+The command compiles the project and runs the tests, then  it launches the application, so you can check by yourself. Open your browser to http://localhost:8080. You should see a _Hello World_ message.
 
 == Anatomy of the project
 
