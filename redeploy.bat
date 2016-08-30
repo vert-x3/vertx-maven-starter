@@ -1,4 +1,4 @@
-@echo on
+@echo off
 
 SET LAUNCHER="io.vertx.core.Launcher"
 SET VERTICLE="io.vertx.starter.MainVerticle"
