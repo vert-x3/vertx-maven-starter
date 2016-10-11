@@ -13,7 +13,7 @@ Create your project with:
 
 [source]
 ----
-git clone https://github.com/cescoffier/vertx-maven-starter.git PROJECT_NAME
+git clone https://github.com/vert-x3/vertx-maven-starter.git PROJECT_NAME
 ----
 
 Replace `PROJECT_NAME` with the name of your project.
@@ -65,4 +65,3 @@ mvn clean package
 ----
 
 It generates a _fat-jar_ in the `target` directory.
-
