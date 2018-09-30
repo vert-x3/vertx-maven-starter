@@ -31,7 +31,7 @@ Once you have retrieved the project, you can check that everything works with:
 
 [source]
 ----
-mvn test exec:java
+mvn test vertx:run
 ----
 
 The command compiles the project and runs the tests, then  it launches the application, so you can check by yourself. Open your browser to http://localhost:8080. You should see a _Hello World_ message.
@@ -47,17 +47,15 @@ The project contains:
 == Start to hack
 
 1. Delete the `.git` directory
-2. Open the `pom.xml` file and customize the `groupId`, `artifactId` and `version`. You can also change the `main.verticle` property to use your own package name and verticle class.
-3. Run `redeploy.sh` (or `redeploy.bat` on Windows) and the project recompiles while editing.
-
-NOTE: the `redeploy` script are also configurable
+2. Open the `pom.xml` file and customize the `groupId`, `artifactId` and `version`. You can also change the `vertx.verticle` property to use your own package name and verticle class.
+3. Run `mvn compile vertx:run` and the project recompiles while editing.
 
 == Building the project
 
 To build the project, just use:
 
 ----
-mvn clean package
+mvn clean vertx:package
 ----
 
 It generates a _fat-jar_ in the `target` directory.
