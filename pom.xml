@@ -11,6 +11,7 @@
 
   <properties>
     <vertx.version>3.5.2</vertx.version>
+    <vertx.plugin.version>1.0.17</vertx.plugin.version>
     <vertx.verticle>io.vertx.starter.MainVerticle</vertx.verticle>
     <vertx.launcher>io.vertx.core.Launcher</vertx.launcher>
 
@@ -57,18 +58,18 @@
       <plugin>
         <groupId>io.reactiverse</groupId>
         <artifactId>vertx-maven-plugin</artifactId>
-        <version>1.0.17</version>
+        <version>${vertx.plugin.version}</version>
         <executions>
           <execution>
             <id>vmp</id>
             <goals>
+              <goal>initialize</goal>
               <goal>package</goal>
             </goals>
           </execution>
         </executions>
         <configuration>
           <redeploy>true</redeploy>
-          <appId>vertx-maven-starter</appId>
         </configuration>
       </plugin>
 
