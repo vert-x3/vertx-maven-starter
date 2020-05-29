@@ -1,40 +1,48 @@
 package io.vertx.starter;
 
-import io.vertx.core.Vertx;
-import io.vertx.ext.unit.Async;
-import io.vertx.ext.unit.TestContext;
-import io.vertx.ext.unit.junit.VertxUnitRunner;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
-@RunWith(VertxUnitRunner.class)
+import io.vertx.core.Vertx;
+import io.vertx.ext.web.client.WebClient;
+import io.vertx.ext.web.codec.BodyCodec;
+import io.vertx.junit5.Checkpoint;
+import io.vertx.junit5.VertxExtension;
+import io.vertx.junit5.VertxTestContext;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import static org.assertj.core.api.Assertions.*;
+
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@ExtendWith(VertxExtension.class)
 public class MainVerticleTest {
 
   private Vertx vertx;
 
-  @Before
-  public void setUp(TestContext tc) {
-    vertx = Vertx.vertx();
-    vertx.deployVerticle(MainVerticle.class.getName(), tc.asyncAssertSuccess());
-  }
-
-  @After
-  public void tearDown(TestContext tc) {
-    vertx.close(tc.asyncAssertSuccess());
-  }
-
   @Test
-  public void testThatTheServerIsStarted(TestContext tc) {
-    Async async = tc.async();
-    vertx.createHttpClient().getNow(8080, "localhost", "/", response -> {
-      tc.assertEquals(response.statusCode(), 200);
-      response.bodyHandler(body -> {
-        tc.assertTrue(body.length() > 0);
-        async.complete();
-      });
-    });
+  @DisplayName("Test Server Starts")
+  public void testThatTheServerIsStarted(Vertx vertx, VertxTestContext tc) {
+
+    WebClient webClient = WebClient.create(vertx);
+    Checkpoint deploymentCheckpoint = tc.checkpoint();
+    Checkpoint requestCheckpoint = tc.checkpoint();
+
+    vertx.deployVerticle(new MainVerticle(), tc.succeeding(id -> {
+
+      deploymentCheckpoint.flag();
+
+      webClient.get(8080, "localhost", "/")
+        .as(BodyCodec.string())
+        .send(tc.succeeding(resp -> {
+          tc.verify(() -> {
+            assertThat(resp.body()).contains("Hello Vert.x!");
+            assertThat(resp.statusCode()).isEqualTo(200);
+            requestCheckpoint.flag();
+          });
+        }));
+    }));
+
   }
 
 }

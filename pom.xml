@@ -12,6 +12,11 @@
   <properties>
     <vertx.version>3.9.1</vertx.version>
     <main.verticle>io.vertx.starter.MainVerticle</main.verticle>
+    <!-- Testing stuff -->
+    <junit-jupiter.version>5.1.0</junit-jupiter.version>
+    <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
+    <junit-platform-surefire-provider.version>1.0.1</junit-platform-surefire-provider.version>
+    <assertj-core.version>3.8.0</assertj-core.version>
   </properties>
 
   <dependencyManagement>
@@ -32,14 +37,42 @@
       <artifactId>vertx-core</artifactId>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-web</artifactId>
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
-      <artifactId>vertx-unit</artifactId>
+      <artifactId>vertx-web-client</artifactId>
+    </dependency>
+    <!-- Testing -->
+
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-junit5</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit-jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>${junit-jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${junit-jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj-core.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -101,6 +134,14 @@
           </arguments>
         </configuration>
       </plugin>
+
+      <!-- JUnit 5 requires Surefire version 2.22.1 or higher -->
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin.version}</version>
+      </plugin>
+
+
     </plugins>
   </build>
 
